@@ -6,7 +6,7 @@ arm64.
 
 ## Architecture
 
-- The compiled C++ facade ships as `Frameworks/Gudhi.xcframework` (a binary
+- The compiled C++ facade ships as `Frameworks/GudhiCore.xcframework` (a binary
   target), built by the sibling repo
   `../../cpp/gudhi-xcframework-builder` (run its `make`, which mirrors the
   xcframework here). The Swift sources in `Sources/SwiftGUDHI/` are thin,

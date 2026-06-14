@@ -28,13 +28,13 @@ builder repo (`cpp/gudhi-xcframework-builder/GUDHI_VERSION`).
 
 ## Setup
 
-The package depends on a prebuilt `Gudhi.xcframework` in `Frameworks/`. Produce
+The package depends on a prebuilt `GudhiCore.xcframework` in `Frameworks/`. Produce
 it from the sibling builder repo:
 
 ```sh
 cd ../../cpp/gudhi-xcframework-builder
 cp config.sh.example config.sh        # SWIFT_PACKAGE_FRAMEWORKS_DIR points here
-make                                  # builds + mirrors Gudhi.xcframework into Frameworks/
+make                                  # builds + mirrors GudhiCore.xcframework into Frameworks/
 ```
 
 Then:

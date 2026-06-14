@@ -25,7 +25,7 @@ let package = Package(
         // Local path for now; switch to url:+checksum: once published.
         .binaryTarget(
             name: "GudhiCore",
-            path: "Frameworks/Gudhi.xcframework"
+            path: "Frameworks/GudhiCore.xcframework"
         ),
         // Swift-idiomatic wrapper around the imported `gudhi_swift` C++ API.
         .target(
