@@ -1,6 +1,6 @@
 // Witness.swift — witness complexes (landmark-based reconstruction).
 
-import GudhiCore
+import GudhiCoreFull
 
 public enum Witness {
     /// Euclidean witness complex from a landmark set and a witness (point) set.

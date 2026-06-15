@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 // These exercise the C++ facade's exception barrier. Swift cannot catch C++
 // exceptions — without the barrier, a throw from GUDHI/CGAL/Hera would terminate

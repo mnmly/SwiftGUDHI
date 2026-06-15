@@ -1,4 +1,4 @@
-# ``SwiftGUDHI``
+# ``SwiftGUDHIFull``
 
 Topological Data Analysis on Apple platforms, bridged from
 [GUDHI](https://gudhi.inria.fr) through Swift/C++ interoperability.

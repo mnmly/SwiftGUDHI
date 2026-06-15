@@ -7,7 +7,7 @@
 // islands become visible.
 
 import CxxStdlib
-import GudhiCore
+import GudhiCoreFull
 
 /// A cluster of input points produced by Mapper.
 public struct MapperNode: Sendable, Hashable {

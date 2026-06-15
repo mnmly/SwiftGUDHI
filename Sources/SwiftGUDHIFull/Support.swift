@@ -1,7 +1,7 @@
 // Support.swift — shared bridging helpers between Swift and the C++ facade.
 
 import CxxStdlib
-import GudhiCore
+import GudhiCoreFull
 
 /// Build a C++ `std::vector<int>` from a Swift `[Int]`.
 @inlinable

@@ -1,7 +1,7 @@
 // Distances.swift — bottleneck and Wasserstein distances between persistence
 // diagrams (via the bundled Hera).
 
-import GudhiCore
+import GudhiCoreFull
 
 public enum DiagramDistance {
     /// Bottleneck distance between two diagrams.

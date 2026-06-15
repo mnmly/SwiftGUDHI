@@ -1,6 +1,6 @@
 // Tangential.swift — Tangential complex (manifold reconstruction).
 
-import GudhiCore
+import GudhiCoreFull
 
 public enum Tangential {
     /// Build a Tangential complex from points sampled on a manifold of the given

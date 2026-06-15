@@ -1,41 +1,39 @@
 // swift-tools-version: 6.0
 import PackageDescription
 
-// Swift/C++ interoperability is enabled for every Swift target that touches the
-// GUDHI facade. The constraint (swift#66156) is that downstream dependents of a
-// Cxx-interop target must also enable it, so we keep the surface small.
+// GPL-3.0 "full" flavor (full-gpl branch): adds the CGAL-backed Alpha,
+// Tangential and Euclidean-Witness modules. Linking it makes your app GPL-3.0 —
+// use the permissive `SwiftGUDHI` (main branch) for closed-source apps.
 let cxx: [SwiftSetting] = [.interoperabilityMode(.Cxx)]
 
 let package = Package(
-    name: "SwiftGUDHI",
+    name: "SwiftGUDHIFull",
     platforms: [
-        // Reference types imported from C++ need macOS 13.3+; we target 14 to
-        // match the rest of the swift/ packages. Visualization stays native.
         .macOS(.v14)
     ],
     products: [
-        .library(name: "SwiftGUDHI", targets: ["SwiftGUDHI"])
+        .library(name: "SwiftGUDHIFull", targets: ["SwiftGUDHIFull"])
     ],
     dependencies: [
-        // DocC static-site generation (package plugin; no target dependency).
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3"),
     ],
     targets: [
-        // The prebuilt C++ facade + GUDHI, as a static-library xcframework.
-        // Local path for now; switch to url:+checksum: once published.
+        // GPL-3.0 binary (CGAL/GMP/MPFR), fetched from the builder's release.
+        // For local iteration: .binaryTarget(name: "GudhiCoreFull",
+        // path: "Frameworks/GudhiCoreFull.xcframework").
         .binaryTarget(
-            name: "GudhiCore",
-            path: "Frameworks/GudhiCore.xcframework"
+            name: "GudhiCoreFull",
+            url: "https://github.com/mnmly/gudhi-xcframework-builder/releases/download/v0.4.0-gpl/GudhiCoreFull.xcframework.zip",
+            checksum: "44014b58c5bfb54c24d66b069dc0ae8b654120d51a6d791a0a6d6d913a826c71"
         ),
-        // Swift-idiomatic wrapper around the imported `gudhi_swift` C++ API.
         .target(
-            name: "SwiftGUDHI",
-            dependencies: ["GudhiCore"],
+            name: "SwiftGUDHIFull",
+            dependencies: ["GudhiCoreFull"],
             swiftSettings: cxx
         ),
         .testTarget(
-            name: "SwiftGUDHITests",
-            dependencies: ["SwiftGUDHI"],
+            name: "SwiftGUDHIFullTests",
+            dependencies: ["SwiftGUDHIFull"],
             swiftSettings: cxx
         ),
     ],

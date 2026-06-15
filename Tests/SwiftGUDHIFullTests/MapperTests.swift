@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 // Minimal union-find to reason about the produced graph's topology.
 private struct DSU {

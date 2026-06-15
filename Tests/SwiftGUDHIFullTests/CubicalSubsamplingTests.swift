@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 @Test func cubicalMonotoneImageOneComponent() {
     // A 3x3 grid of strictly increasing values has a single sublevel component

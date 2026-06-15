@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 private func circle(_ n: Int, radius: Double = 1) -> [[Double]] {
     (0..<n).map { i in

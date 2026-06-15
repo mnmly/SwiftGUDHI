@@ -1,7 +1,7 @@
 // CubicalComplex.swift — persistence of images / regular grids.
 
 import CxxStdlib
-import GudhiCore
+import GudhiCoreFull
 
 public struct CubicalComplex {
     var cxx: gudhi_swift.CubicalComplex

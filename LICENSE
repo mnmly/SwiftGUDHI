@@ -1,0 +1,41 @@
+SwiftGUDHIFull — licensing
+==========================
+
+The original Swift source in this package is authored by Hiroaki Yamane (mnmly)
+and offered under the MIT License (below).
+
+HOWEVER, this package links `GudhiCoreFull.xcframework`, which statically links
+CGAL packages licensed GPL-3.0-or-later (the dD triangulation behind the Alpha,
+Tangential and Euclidean Witness modules) plus GMP/MPFR (LGPL-3.0). Therefore the
+usable package, and any application that links it, is governed by
+**GPL-3.0-or-later** (see LICENSE.GPL-3.0): such an application must itself be
+GPL-3.0-compatible with its complete source available, and cannot be shipped
+closed-source / on the App Store.
+
+For a permissive (MIT/BSD) build without the CGAL modules, use the `SwiftGUDHI`
+package on the `main` branch instead.
+
+See THIRD_PARTY_LICENSES.md for the component inventory.
+
+--------------------------------------------------------------------------------
+MIT License (covers the original Swift source files in this package)
+
+Copyright (c) 2026 Hiroaki Yamane (mnmly)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

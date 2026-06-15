@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 @Test func manualSimplexTreeAndPersistence() {
     // A hollow triangle (3 edges, no filling 2-simplex) has one 1-cycle.

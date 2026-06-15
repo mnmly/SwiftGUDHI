@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 // Connected-components / cycle helpers over a MapperGraph.
 private struct DSU {

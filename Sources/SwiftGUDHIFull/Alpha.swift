@@ -1,6 +1,6 @@
 // Alpha.swift — Alpha complex (Delaunay-based, CGAL) builder.
 
-import GudhiCore
+import GudhiCoreFull
 
 public enum Alpha {
     /// Numerical precision of the underlying CGAL kernel.

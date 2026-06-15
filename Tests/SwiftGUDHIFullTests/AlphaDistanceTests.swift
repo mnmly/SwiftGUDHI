@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import SwiftGUDHI
+@testable import SwiftGUDHIFull
 
 @Test func alphaComplexCircleHasLoop() {
     // Alpha complex of a circle (CGAL/Epeck path) must recover the loop.

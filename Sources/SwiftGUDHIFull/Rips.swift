@@ -1,6 +1,6 @@
 // Rips.swift — Rips and Sparse-Rips complex builders.
 
-import GudhiCore
+import GudhiCoreFull
 
 public enum Rips {
     /// Rips complex from a point cloud (Euclidean), expanded to `maxDimension`.

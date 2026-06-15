@@ -1,7 +1,7 @@
 // Subsampling.swift — point-cloud subsampling (landmark selection).
 
 import CxxStdlib
-import GudhiCore
+import GudhiCoreFull
 
 public enum Subsampling {
     /// Greedy farthest-point sampling: `count` well-spread landmarks.

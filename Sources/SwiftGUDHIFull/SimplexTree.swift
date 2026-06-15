@@ -3,7 +3,7 @@
 // persistence is computed on it.
 
 import CxxStdlib
-import GudhiCore
+import GudhiCoreFull
 
 public struct SimplexTree {
     /// The underlying C++ handle (reference semantics: copies share the complex).
