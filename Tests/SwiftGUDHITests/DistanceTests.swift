@@ -2,23 +2,6 @@ import Testing
 import Foundation
 @testable import SwiftGUDHI
 
-@Test func alphaComplexCircleHasLoop() {
-    // Alpha complex of a circle (CGAL/Epeck path) must recover the loop.
-    let n = 40
-    let circle: [[Double]] = (0..<n).map { i in
-        let a = 2.0 * Double.pi * Double(i) / Double(n)
-        return [cos(a), sin(a)]
-    }
-    let st = Alpha.complex(pointCloud: circle, precision: .safe)
-    #expect(st.numVertices == n)
-
-    let diagram = st.persistence(persistenceDimMax: true)
-    let h1 = diagram.filter { $0.dimension == 1 }
-    #expect(h1.count >= 1, "alpha complex of a circle should have an H1 class")
-    let longest = h1.map { $0.death - $0.birth }.max() ?? 0
-    #expect(longest > 0.1, "the loop should be prominent; got \(longest)")
-}
-
 @Test func bottleneckBasics() {
     // Identical diagrams: distance 0.
     let d: [(Double, Double)] = [(0, 1), (0.5, 2)]
@@ -48,20 +31,4 @@ import Foundation
     let near = DiagramDistance.wasserstein([(0, 2)], [], order: 1, internalP: 2)
     let far = DiagramDistance.wasserstein([(0, 4)], [], order: 1, internalP: 2)
     #expect(far > near, "farther-from-diagonal point should cost more (\(far) vs \(near))")
-}
-
-@Test func alphaVsRipsAgreeOnLoopCount() {
-    // Both constructions should agree: a circle has exactly one 1-cycle.
-    let n = 30
-    let circle: [[Double]] = (0..<n).map { i in
-        let a = 2.0 * Double.pi * Double(i) / Double(n)
-        return [cos(a), sin(a)]
-    }
-    let alpha = Alpha.complex(pointCloud: circle).persistence(persistenceDimMax: true)
-    let rips = Rips.complex(pointCloud: circle, maxEdgeLength: 2.5, maxDimension: 2)
-        .persistence(persistenceDimMax: true)
-    let alphaH1 = alpha.filter { $0.dimension == 1 && ($0.death - $0.birth) > 0.05 }.count
-    let ripsH1 = rips.filter { $0.dimension == 1 && ($0.death - $0.birth) > 0.5 }.count
-    #expect(alphaH1 == 1)
-    #expect(ripsH1 == 1)
 }

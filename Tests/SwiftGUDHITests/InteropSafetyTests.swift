@@ -24,6 +24,5 @@ import Foundation
 @Test func emptyAndDegenerateInputsAreSafe() {
     // Empty inputs flow through the guards to empty results.
     #expect(Rips.complex(pointCloud: [], maxEdgeLength: 1, maxDimension: 2).numVertices == 0)
-    #expect(Alpha.complex(pointCloud: []).numVertices == 0)
     #expect(Subsampling.farthestPoints([], count: 3).isEmpty)
 }

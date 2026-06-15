@@ -21,11 +21,15 @@ let package = Package(
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3"),
     ],
     targets: [
-        // The prebuilt C++ facade + GUDHI, as a static-library xcframework.
-        // Local path for now; switch to url:+checksum: once published.
+        // The prebuilt C++ facade + GUDHI, as a static-library xcframework,
+        // fetched from the GitHub release. Permissive (MIT/BSD) build — see
+        // THIRD_PARTY_LICENSES.md. For local iteration against a freshly built
+        // framework, swap this for: .binaryTarget(name: "GudhiCore",
+        // path: "Frameworks/GudhiCore.xcframework").
         .binaryTarget(
             name: "GudhiCore",
-            path: "Frameworks/GudhiCore.xcframework"
+            url: "https://github.com/mnmly/SwiftGUDHI/releases/download/0.4.0/GudhiCore.xcframework.zip",
+            checksum: "a43221c79490fe252f242ef8a9ed4dc0f0973367da10c72b297490cb67d314e1"
         ),
         // Swift-idiomatic wrapper around the imported `gudhi_swift` C++ API.
         .target(

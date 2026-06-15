@@ -44,7 +44,4 @@ import Foundation
 
     let rnd = Subsampling.randomPoints(grid, count: 7)
     #expect(rnd.count == 7)
-
-    let sparse = Subsampling.sparsify(grid, minSquaredDistance: 4.0) // min dist 2
-    #expect(sparse.count < grid.count && !sparse.isEmpty)
 }

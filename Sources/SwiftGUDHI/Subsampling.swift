@@ -29,15 +29,6 @@ public enum Subsampling {
                 p.baseAddress, Int32(rows), Int32(cols), Int32(count)))
         }
     }
-
-    /// Keep points no two of which are closer than `sqrt(minSquaredDistance)`.
-    public static func sparsify(_ points: [[Double]], minSquaredDistance: Double) -> [[Double]] {
-        let rows = points.count, cols = points.first?.count ?? 0
-        return flatten(points).withUnsafeBufferPointer { p in
-            matrixToSwift(gudhi_swift.sparsifyPointSet(
-                p.baseAddress, Int32(rows), Int32(cols), minSquaredDistance))
-        }
-    }
 }
 
 /// Convert a C++ `std::vector<std::vector<double>>` to a Swift `[[Double]]`.

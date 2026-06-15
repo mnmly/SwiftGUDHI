@@ -3,23 +3,6 @@
 import GudhiCore
 
 public enum Witness {
-    /// Euclidean witness complex from a landmark set and a witness (point) set.
-    public static func euclidean(landmarks: [[Double]],
-                                 witnesses: [[Double]],
-                                 maxAlphaSquare: Double = .infinity,
-                                 limitDimension: Int = -1) -> SimplexTree {
-        let lDim = landmarks.first?.count ?? 0
-        let wDim = witnesses.first?.count ?? 0
-        return flatten(landmarks).withUnsafeBufferPointer { lp in
-            flatten(witnesses).withUnsafeBufferPointer { wp in
-                SimplexTree(gudhi_swift.euclideanWitnessComplex(
-                    lp.baseAddress, Int32(landmarks.count), Int32(lDim),
-                    wp.baseAddress, Int32(witnesses.count), Int32(wDim),
-                    maxAlphaSquare, Int32(limitDimension)))
-            }
-        }
-    }
-
     /// Witness complex from a precomputed nearest-landmark table. Each witness
     /// lists its `k` nearest landmarks (index, squared distance), nearest first.
     /// All rows must share the same `k`.

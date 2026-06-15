@@ -9,18 +9,6 @@ private func circle(_ n: Int, radius: Double = 1) -> [[Double]] {
     }
 }
 
-@Test func euclideanWitnessBuilds() {
-    let witnesses = circle(80)
-    let landmarks = Subsampling.farthestPoints(witnesses, count: 16, startingPoint: 0)
-    let st = Witness.euclidean(landmarks: landmarks, witnesses: witnesses,
-                               maxAlphaSquare: 0.5, limitDimension: 2)
-    #expect(st.numVertices == 16)
-    #expect(st.numSimplices > 16, "witnesses should induce edges among landmarks")
-    // Persistence runs through the whole pipeline.
-    let diagram = st.persistence(persistenceDimMax: true)
-    #expect(!diagram.isEmpty)
-}
-
 @Test func witnessFromTableBuilds() {
     // 3 landmarks, 3 witnesses each nearest to a different pair — a triangle.
     let table: [[(landmark: Int, squaredDistance: Double)]] = [
@@ -30,14 +18,6 @@ private func circle(_ n: Int, radius: Double = 1) -> [[Double]] {
     ]
     let st = Witness.fromTable(table, maxAlphaSquare: 2.0, limitDimension: 2)
     #expect(st.numVertices == 3)
-}
-
-@Test func tangentialComplexBuilds() {
-    // Points on a circle = a 1-manifold; intrinsic dimension 1.
-    let pts = circle(30)
-    let st = Tangential.complex(pointCloud: pts, intrinsicDimension: 1)
-    #expect(st.numVertices == 30)
-    #expect(st.numSimplices > 0)
 }
 
 @Test func edgeCollapsePreservesLoop() {
