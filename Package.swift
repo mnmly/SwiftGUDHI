@@ -28,7 +28,7 @@ let package = Package(
         // path: "Frameworks/GudhiCore.xcframework").
         .binaryTarget(
             name: "GudhiCore",
-            url: "https://github.com/mnmly/SwiftGUDHI/releases/download/0.4.0/GudhiCore.xcframework.zip",
+            url: "https://github.com/mnmly/gudhi-xcframework-builder/releases/download/v0.4.0/GudhiCore.xcframework.zip",
             checksum: "a43221c79490fe252f242ef8a9ed4dc0f0973367da10c72b297490cb67d314e1"
         ),
         // Swift-idiomatic wrapper around the imported `gudhi_swift` C++ API.
