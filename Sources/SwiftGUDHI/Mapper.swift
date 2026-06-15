@@ -135,6 +135,49 @@ public enum Mapper {
         }
     }
 
+    /// Build a Mapper graph from a point cloud using an **N-dimensional lens**.
+    ///
+    /// GUDHI's functional cover is 1-D; this builds the N-D hypercube cover and
+    /// refines each cell into connected components, so with `lensDim` 2/3/4 the
+    /// graph can branch/loop (a grid atlas) rather than collapse to a chain.
+    ///
+    /// - Parameters:
+    ///   - pointCloud: rows of equal-length coordinate vectors.
+    ///   - lensND: row-major `rows * lensDim` lens (point i = `lensND[i*lensDim ..< (i+1)*lensDim]`).
+    ///   - lensDim: number of lens dimensions (>= 1).
+    ///   - color: optional color per point; `nil` => `options.colorCoordinate`.
+    ///   - options: tuning parameters (`resolution`/`gain` apply per lens axis).
+    public static func build(pointCloud: [[Double]],
+                             lensND: [Double],
+                             lensDim: Int,
+                             color: [Double]? = nil,
+                             options: Options = Options()) -> MapperGraph {
+        let rows = pointCloud.count
+        guard rows > 0, lensDim > 0, lensND.count == rows * lensDim else {
+            return MapperGraph(nodes: [], edges: [])
+        }
+        let cols = pointCloud[0].count
+        guard cols > 0 else { return MapperGraph(nodes: [], edges: []) }
+
+        var flat = [Double]()
+        flat.reserveCapacity(rows * cols)
+        for row in pointCloud {
+            precondition(row.count == cols, "SwiftGUDHI: ragged pointCloud (rows must share a dimension)")
+            flat.append(contentsOf: row)
+        }
+
+        let opt = options.cxx
+        return flat.withUnsafeBufferPointer { pts in
+            lensND.withUnsafeBufferPointer { lensPtr in
+                withOptional(color) { colorPtr in
+                    let g = gudhi_swift.computeMapperND(pts.baseAddress, Int32(rows), Int32(cols),
+                                                        lensPtr.baseAddress, Int32(lensDim), colorPtr, opt)
+                    return convert(g)
+                }
+            }
+        }
+    }
+
     /// Version string reported by the underlying C++ facade.
     public static var version: String { String(gudhi_swift.version()) }
 }
